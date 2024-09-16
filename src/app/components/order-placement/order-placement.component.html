@@ -1,7 +1,54 @@
-<div class="container">
-    <div class="d-flex align-items-center justify-content-center">
-        <h1>abc</h1>
-    <h1>abc</h1>
-    <h1>abc</h1>
+<div class="trade-form">
+    <h2>Simulated Live Trade Form</h2>
+    <form [formGroup]="tradeForm" (ngSubmit)="onSubmit()">
+        <label for="asset">Asset Type</label>
+        <select id="asset" formControlName="asset">
+            <option value="">Select an asset</option>
+            <option value="XAUUSD">XAUUSD</option>
+            <option value="US30">US30</option>
+            <option value="Bitcoin">Bitcoin</option>
+            <option value="SPX500">SPX500</option>
+            <!-- Add more assets as needed -->
+        </select>
+        <div *ngIf="tradeForm.get('asset')?.invalid && tradeForm.get('asset')?.touched">
+            Asset Type is required.
+        </div>
+
+        <label for="tradeType">Trade Type</label>
+        <select id="tradeType" formControlName="tradeType">
+            <option value="">Select trade type</option>
+            <option value="Buy">Buy</option>
+            <option value="Sell">Sell</option>
+        </select>
+        <div *ngIf="tradeForm.get('tradeType')?.invalid && tradeForm.get('tradeType')?.touched">
+            Trade Type is required.
+        </div>
+
+        <label for="lotSize">Trade Amount (Lot Size)</label>
+        <input type="number" id="lotSize" formControlName="lotSize" min="0.01" step="0.01">
+        <div *ngIf="tradeForm.get('lotSize')?.invalid && tradeForm.get('lotSize')?.touched">
+            Lot Size is required and must be at least 0.01.
+        </div>
+
+        <label for="entryPrice">Entry Price</label>
+        <input type="number" id="entryPrice" formControlName="entryPrice" min="0" step="0.01">
+        <div *ngIf="tradeForm.get('entryPrice')?.invalid && tradeForm.get('entryPrice')?.touched">
+            Entry Price is required and must be a positive number.
+        </div>
+
+        <label for="exitPrice">Exit Price (Optional)</label>
+        <input type="number" id="exitPrice" formControlName="exitPrice" min="0" step="0.01">
+
+        <label for="stopLoss">Stop Loss (Optional)</label>
+        <input type="number" id="stopLoss" formControlName="stopLoss" min="0" step="0.01">
+
+        <label for="takeProfit">Take Profit (Optional)</label>
+        <input type="number" id="takeProfit" formControlName="takeProfit" min="0" step="0.01">
+
+        <button type="submit" [disabled]="tradeForm.invalid">Place Trade</button>
+    </form>
+
+    <div class="result" *ngIf="result">
+        <p>{{ result.message }}</p>
     </div>
 </div>
