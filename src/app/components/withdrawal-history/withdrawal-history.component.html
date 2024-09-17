@@ -1,1 +1,28 @@
-<p>withdrawal-history works!</p>
+<div class="container mt-5">
+    <h2>Withdrawal History</h2>
+
+    <!-- Search Input -->
+    <div class="mb-3">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" (ngModelChange)="filterOrders()" placeholder="Search by Asset">
+    </div>
+
+    <!-- Withdrawals Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Asset</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let withdrawal of withdrawals">
+                <td>{{ withdrawal.asset }}</td>
+                <td>{{ withdrawal.amount }}</td>
+                <td>{{ withdrawal.date }}</td>
+                <td>{{ withdrawal.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

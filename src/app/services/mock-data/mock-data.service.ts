@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class MockDataService {
-  constructor() {}
+  constructor() { }
 
   getPreviousOrders() {
     return [
@@ -35,6 +35,24 @@ export class MockDataService {
         pnl: 250,
         status: 'Closed',
       },
+      {
+        asset: 'XAUUSD',
+        date: '2024-09-04',
+        entry: 1930,
+        exit: 1950,
+        lotSize: 1.5,
+        pnl: 300,
+        status: 'Closed',
+      },
+      {
+        asset: 'US30',
+        date: '2024-09-05',
+        entry: 34000,
+        exit: 34500,
+        lotSize: 1,
+        pnl: 500,
+        status: 'Closed',
+      },
     ];
   }
 
@@ -58,6 +76,18 @@ export class MockDataService {
         date: '2024-09-03',
         status: 'Completed',
       },
+      {
+        asset: 'US30',
+        amount: 1500,
+        date: '2024-09-04',
+        status: 'Completed',
+      },
+      {
+        asset: 'XAUUSD',
+        amount: 2000,
+        date: '2024-09-05',
+        status: 'Pending',
+      },
     ];
   }
 
@@ -67,16 +97,25 @@ export class MockDataService {
         { time: '10:00', price: 1920 },
         { time: '10:05', price: 1930 },
         { time: '10:10', price: 1940 },
+        { time: '10:15', price: 1950 },
       ],
       SPX500: [
         { time: '10:00', price: 4500 },
         { time: '10:05', price: 4550 },
         { time: '10:10', price: 4600 },
+        { time: '10:15', price: 4650 },
       ],
       BTCUSD: [
         { time: '10:00', price: 26000 },
         { time: '10:05', price: 26200 },
         { time: '10:10', price: 26500 },
+        { time: '10:15', price: 26700 },
+      ],
+      US30: [
+        { time: '10:00', price: 34000 },
+        { time: '10:05', price: 34200 },
+        { time: '10:10', price: 34500 },
+        { time: '10:15', price: 34700 },
       ],
     };
   }
@@ -101,6 +140,6 @@ export class MockDataService {
   }
 
   getAvailableAssets() {
-    return ['XAUUSD', 'SPX500', 'BTCUSD'];
+    return ['XAUUSD', 'SPX500', 'BTCUSD', 'US30'];
   }
 }
