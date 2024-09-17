@@ -15,7 +15,9 @@ export class PreviousOrderHistoryComponent implements OnInit {
   filteredOrders: any[] = [];
   searchTerm: string = '';
 
-  constructor(private mockDataService: MockDataService) { }
+  constructor(
+    private mockDataService: MockDataService
+  ) { }
 
   ngOnInit(): void {
     this.previousOrders = this.mockDataService.getPreviousOrders();
