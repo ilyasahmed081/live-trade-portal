@@ -20,7 +20,7 @@ export const routes: Routes = [
         loadComponent: () => import('./components/previous-order-history/previous-order-history.component').then((c) => c.PreviousOrderHistoryComponent),
     },
     { 
-        path: 'simulated-live-trades',
+        path: 'live-trades',
         loadComponent: () => import('./components/simulated-live-trades/simulated-live-trades.component').then((c) => c.SimulatedLiveTradesComponent),
     },
     { 
