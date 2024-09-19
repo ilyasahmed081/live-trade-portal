@@ -65,7 +65,7 @@ export class OrderPlacementComponent implements OnInit {
       };
 
       this.result = this.placeOrder(order);
-      this.router.navigateByUrl('/simulated-live-trades');
+      this.router.navigateByUrl('/live-trades');
     } else {
       console.log('Form is invalid');
     }
